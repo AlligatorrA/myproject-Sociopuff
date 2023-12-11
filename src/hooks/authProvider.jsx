@@ -2,7 +2,7 @@ import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getIDtoken, getToken, parseJwt } from "../utils/common";
+import { parseJwt } from "../utils/common";
 import { ROLE_BRAND, ROLE_INFLUENCER } from "../utils/constants";
 import React from "react";
 const AuthContext = createContext()
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
     const LoginInputHandle = async () => {
         if (username !== "" & password !== '') {
             const data = { username: username, password: password }
-            const accessToken = getToken()
+            const accessToken = token
             const accessTokenParse = parseJwt(accessToken)
             try {
                 const res = await axios.post(`http://localhost:9090/user/authenticate`, data)
@@ -27,7 +27,6 @@ const AuthProvider = ({ children }) => {
                         accessToken: res.data.accessToken
                     }))
                     setToken(res.data.accessToken)
-                    console.log(accessTokenParse);
 
                     if (accessTokenParse.roles[0] === ROLE_BRAND) {
                         navigate(`/createcampaign`)
@@ -51,7 +50,6 @@ const AuthProvider = ({ children }) => {
     const LogOutHandle = () => {
         setTimeout(() => {
             localStorage.removeItem("accessToken")
-            localStorage.removeItem("idToken")
             setToken("")
             navigate("/")
 

@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import Header from "../component/Header";
 import React, { useState } from "react";
+import axios from "axios";
 
 const Createcampaign = () => {
+  const token = JSON.parse(localStorage.getItem("accessToken"))
+
   const [selectedCampaignTypes, setSelectedCampaignTypes] = useState([
     "Affiliated",
   ]);
@@ -52,24 +55,25 @@ const Createcampaign = () => {
   };
 
   const handleCreateCampaign = async () => {
+
+    console.log(token.accessToken, "tokennnnn");
     try {
-      const response = await fetch("your_api_endpoint", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await axios.post("http://localhost:9090/campaign", formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token.accessToken}`
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+          },
 
-      const data = await response.json();
-      // Handle the response data as needed
-      console.log(data);
+        }).then(res => console.log(res))
+
+
+      // const data = await response.json();
+      // // Handle the response data as needed
+      // console.log(data);
     } catch (error) {
-      console.error("Error:", error.message);
+      console.error("Error:", error);
     }
   };
 

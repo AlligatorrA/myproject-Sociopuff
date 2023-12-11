@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ROLE_BRAND, ROLE_INFLUENCER } from "../utils/constants";
 import axios from "axios";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 
@@ -235,18 +234,16 @@ const Createaccount = () => {
                             <div>
                               <GoogleLogin
                                 onSuccess={async credentialResponse => {
-                                  console.log(credentialResponse, 'credent');
                                   const data = credentialResponse.credential
                                   try {
                                     const res = await axios.post(`http://localhost:9090/user/googleAuthenticate`, {
                                       authorizationCode: data,
                                       role: "ROLE_BRAND"
                                     })
-                                    console.log(res, 'response');
                                     if (res.status === 201) {
                                       toast.success("Log In Successfully")
                                       localStorage.setItem('accessToken', JSON.stringify({
-                                        idToken: res.data.accessToken
+                                        accessToken: res.data.accessToken
                                       }))
                                       navigate("/createcampaign")
                                     }

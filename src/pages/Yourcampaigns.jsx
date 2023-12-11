@@ -1,10 +1,52 @@
 import { Link } from "react-router-dom";
 import Header from "../component/Header";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+// import GetCampaign from "../GetDataFunctions/GetCampaign";
+
+
+
+
+
+
 const Yourcampaigns = () => {
+
+  const [allCampaigns, setAllCampaigns] = useState([])
+  const token = JSON.parse(localStorage.getItem("accessToken"))
+
+
+  const GetCampaign = async () => {
+
+    try {
+      const data = await axios.get('http://localhost:9090/campaigns', {
+        headers: {
+          Authorization: `Bearer ${token.accessToken}`
+        }
+      })
+      if (data.status === 202) {
+
+        setAllCampaigns(data)
+        console.log(allCampaigns);
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+
+
+  useEffect(() => {
+    GetCampaign()
+  }, [])
+
+
+
   return (
     <>
-      <div classNameNameName="wrapper">
+      <div className="wrapper">
         <Header />
         <div className="sidebar sidebar-style-2">
           <div className="sidebar-wrapper scrollbar scrollbar-inner">
@@ -150,44 +192,49 @@ const Yourcampaigns = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <img src="assets/images/product1.jpg" alt="" />
-                        </td>
-                        <td>Vitamin C Face Durum Apr 1</td>
-                        <td>Mamaearth</td>
-                        <td>Beauty</td>
-                        <td>Youtube</td>
-                        <td>
-                          <span className="text-success">Active</span>
-                        </td>
-                        <td>India</td>
-                        <td>12 Mar 2023</td>
-                        <td>25 May 2023</td>
-                        <td className="action">
-                          <a href="#">
-                            <img
-                              src="assets/images/edit.svg"
-                              className="w-16"
-                              alt=""
-                            />
-                          </a>
-                          <a href="your-campaigns-invite-influencers.html">
-                            <img
-                              src="assets/images/invite.svg"
-                              className="w-18"
-                              alt=""
-                            />
-                          </a>
-                          <a href="#">
-                            <img
-                              src="assets/images/pause.svg"
-                              className="w-14"
-                              alt=""
-                            />
-                          </a>
-                        </td>
-                      </tr>
+                      {
+                        // allCampaigns && allCampaigns.map(data =>
+                        // (
+                        //   <tr key={data.id}>
+                        //     <td>
+                        //       <img src="assets/images/product1.jpg" alt="" />
+                        //     </td>
+                        //     <td>{data.campaignName}</td>
+                        //     <td>{data.brandName}</td>
+                        //     <td>Beauty</td>
+                        //     <td>{data.socialMedia}</td>
+                        //     <td>
+                        //       <span className="text-success">Active</span>
+                        //     </td>
+                        //     <td>India</td>
+                        //     <td>12 Mar 2023</td>
+                        //     <td>25 May 2023</td>
+                        //     <td className="action">
+                        //       <a href="#">
+                        //         <img
+                        //           src="assets/images/edit.svg"
+                        //           className="w-16"
+                        //           alt=""
+                        //         />
+                        //       </a>
+                        //       <a href="your-campaigns-invite-influencers.html">
+                        //         <img
+                        //           src="assets/images/invite.svg"
+                        //           className="w-18"
+                        //           alt=""
+                        //         />
+                        //       </a>
+                        //       <a href="#">
+                        //         <img
+                        //           src="assets/images/pause.svg"
+                        //           className="w-14"
+                        //           alt=""
+                        //         />
+                        //       </a>
+                        //     </td>
+                        //   </tr>
+                        // ))
+                      }
                       <tr>
                         <td>
                           <img src="assets/images/product2.jpg" alt="" />

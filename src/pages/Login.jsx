@@ -1,10 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useAuth } from "../hooks/authProvider";
-import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { GoogleLogin } from '@react-oauth/google';
 import { toast } from "react-toastify";
+import { parseJwt } from "../utils/common";
 
 const Login = () => {
   const { token, setToken, username, setUserName, password, setPassword, LoginInputHandle, LogOutHandle, } = useAuth()
@@ -91,24 +91,24 @@ const Login = () => {
                         </select>
                         <GoogleLogin
                           onSuccess={async credentialResponse => {
-                            console.log(credentialResponse, 'credent');
+
                             const data = credentialResponse.credential
                             try {
                               const res = await axios.post(`http://localhost:9090/user/googleAuthenticate`, {
                                 authorizationCode: data,
                                 role: roleOpt
                               })
-                              console.log(res, 'response');
+                              const accessToken = res.data.accessToken
+                              const accessTokenParse = parseJwt(accessToken)
                               if (res.status === 201) {
                                 toast.success("Log In Successfully")
-                                localStorage.setItem('idToken', JSON.stringify({
-                                  idToken: res.data.idToken
+                                localStorage.setItem('accessToken', JSON.stringify({
+                                  accessToken: res.data.accessToken
                                 }))
-
-                                if (roleOpt === "ROLE_BRAND") {
+                                if (accessTokenParse.roles[0] === "ROLE_BRAND") {
                                   navigate("/createcampaign")
                                 }
-                                else if (roleOpt === "ROLE_INFLUENCER") {
+                                else if (accessTokenParse.roles[0] === "ROLE_INFLUENCER") {
                                   navigate("/influencercreate")
                                 }
                               }

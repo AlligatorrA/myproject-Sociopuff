@@ -205,7 +205,6 @@ const Createaccountinfluencer = () => {
                             <div>
                               <GoogleLogin
                                 onSuccess={async credentialResponse => {
-                                  console.log(credentialResponse, 'credent');
                                   const data = credentialResponse.credential
                                   try {
                                     const res = await axios.post(`http://localhost:9090/user/googleAuthenticate`, {
@@ -215,8 +214,8 @@ const Createaccountinfluencer = () => {
                                     console.log(res, 'response');
                                     if (res.status === 201) {
                                       toast.success("Log In Successfully")
-                                      localStorage.setItem('idToken', JSON.stringify({
-                                        idToken: res.data.idToken
+                                      localStorage.setItem('accessToken', JSON.stringify({
+                                        accessToken: res.data.accessToken
                                       }))
                                       navigate("/influencercreate")
                                       {

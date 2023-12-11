@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "../component/Header";
 import React from "react";
-import { useFetchGet } from "../hooks/useFetch";
 import axios from "axios";
 const Influencers = () => {
 
@@ -15,7 +14,7 @@ const Influencers = () => {
       console.log(error);
     }
   }
-  getData()
+
   return (
     <>
       <div className="wrapper">
