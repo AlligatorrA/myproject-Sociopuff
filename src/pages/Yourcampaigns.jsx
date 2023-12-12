@@ -1,48 +1,31 @@
 import { Link } from "react-router-dom";
 import Header from "../component/Header";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-// import GetCampaign from "../GetDataFunctions/GetCampaign";
-
-
-
-
-
+import { useAuth } from "../hooks/authProvider";
 
 const Yourcampaigns = () => {
-
-  const [allCampaigns, setAllCampaigns] = useState([])
-  const token = JSON.parse(localStorage.getItem("accessToken"))
-
-
-  const GetCampaign = async () => {
-
-    try {
-      const data = await axios.get('http://localhost:9090/campaigns', {
-        headers: {
-          Authorization: `Bearer ${token.accessToken}`
-        }
-      })
-      if (data.status === 202) {
-
-        setAllCampaigns(data)
-        console.log(allCampaigns);
-      }
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-
-
-
+  const { token } = useAuth()
+  const [campaigns, setCampaigns] = useState([]);
 
   useEffect(() => {
-    GetCampaign()
-  }, [])
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:9090/campaigns", {
+          headers: {
+            Authorization:
+              `Bearer ${token}`,
+          },
+        });
+        console.log(response);
+        setCampaigns(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -136,15 +119,14 @@ const Yourcampaigns = () => {
             </div>
           </div>
         </div>
-
         <div className="main-panel">
           <div className="content">
             <div className="page-header mt10">
               <h1 className="page-title">Your Campaigns</h1>
               <div className="expor-data ml-auto">
-                <a href="create-campaign.html" className="btn2 btn-sm">
+                <Link to="/createcampaign" className="btn2 btn-sm">
                   Create Campaign
-                </a>
+                </Link>
               </div>
             </div>
             <div className="page-inner">
@@ -163,24 +145,24 @@ const Yourcampaigns = () => {
                         <th>Genre</th>
                         <th>Social Media</th>
                         <th width="100">
-                          <a
+                          <Link
                             className="dropdown-toggle"
                             data-toggle="dropdown"
                             href="#"
                             aria-expanded="false"
                           >
                             Status
-                          </a>
+                          </Link>
                           <ul className="dropdown-menu animated fadeIn">
                             <div className="dropdown-user-scroll scrollbar-outer">
                               <li>
-                                <a className="dropdown-item" href="#">
+                                <Link className="dropdown-item" href="#">
                                   Active
-                                </a>
+                                </Link>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">
+                                <Link className="dropdown-item" href="#">
                                   Pending
-                                </a>
+                                </Link>
                               </li>
                             </div>
                           </ul>
@@ -192,239 +174,66 @@ const Yourcampaigns = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {
-                        // allCampaigns && allCampaigns.map(data =>
-                        // (
-                        //   <tr key={data.id}>
-                        //     <td>
-                        //       <img src="assets/images/product1.jpg" alt="" />
-                        //     </td>
-                        //     <td>{data.campaignName}</td>
-                        //     <td>{data.brandName}</td>
-                        //     <td>Beauty</td>
-                        //     <td>{data.socialMedia}</td>
-                        //     <td>
-                        //       <span className="text-success">Active</span>
-                        //     </td>
-                        //     <td>India</td>
-                        //     <td>12 Mar 2023</td>
-                        //     <td>25 May 2023</td>
-                        //     <td className="action">
-                        //       <a href="#">
-                        //         <img
-                        //           src="assets/images/edit.svg"
-                        //           className="w-16"
-                        //           alt=""
-                        //         />
-                        //       </a>
-                        //       <a href="your-campaigns-invite-influencers.html">
-                        //         <img
-                        //           src="assets/images/invite.svg"
-                        //           className="w-18"
-                        //           alt=""
-                        //         />
-                        //       </a>
-                        //       <a href="#">
-                        //         <img
-                        //           src="assets/images/pause.svg"
-                        //           className="w-14"
-                        //           alt=""
-                        //         />
-                        //       </a>
-                        //     </td>
-                        //   </tr>
-                        // ))
-                      }
-                      <tr>
-                        <td>
-                          <img src="assets/images/product2.jpg" alt="" />
-                        </td>
-                        <td>Vitamin C Face Durum Apr</td>
-                        <td>Mamaearth</td>
-                        <td>Beauty</td>
-                        <td>Youtube</td>
-                        <td>
-                          <span className="text-warning">Active</span>
-                        </td>
-                        <td>India</td>
-                        <td>12 Mar 2023</td>
-                        <td>25 May 2023</td>
-                        <td className="action">
-                          <a href="#">
-                            <img
-                              src="assets/images/edit.svg"
-                              className="w-16"
-                              alt=""
-                            />
-                          </a>
-                          <a href="your-campaigns-invite-influencers.html">
-                            <img
-                              src="assets/images/invite.svg"
-                              className="w-18"
-                              alt=""
-                            />
-                          </a>
-                          <a href="#">
-                            <img
-                              src="assets/images/pause.svg"
-                              className="w-14"
-                              alt=""
-                            />
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <img src="assets/images/product3.jpg" alt="" />
-                        </td>
-                        <td>Vitamin C Face Durum Apr</td>
-                        <td>Mamaearth</td>
-                        <td>Beauty</td>
-                        <td>Youtube</td>
-                        <td>
-                          <span className="text-success">Active</span>
-                        </td>
-                        <td>India</td>
-                        <td>12 Mar 2023</td>
-                        <td>25 May 2023</td>
-                        <td className="action">
-                          <a href="#">
-                            <img
-                              src="assets/images/edit.svg"
-                              className="w-16"
-                              alt=""
-                            />
-                          </a>
-                          <a href="your-campaigns-invite-influencers.html">
-                            <img
-                              src="assets/images/invite.svg"
-                              className="w-18"
-                              alt=""
-                            />
-                          </a>
-                          <a href="#">
-                            <img
-                              src="assets/images/pause.svg"
-                              className="w-14"
-                              alt=""
-                            />
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <img src="assets/images/product1.jpg" alt="" />
-                        </td>
-                        <td>Vitamin C Face Durum Apr</td>
-                        <td>Mamaearth</td>
-                        <td>Beauty</td>
-                        <td>Youtube</td>
-                        <td>
-                          <span className="text-warning">Pending</span>
-                        </td>
-                        <td>India</td>
-                        <td>12 Mar 2023</td>
-                        <td>25 May 2023</td>
-                        <td className="action">
-                          <a href="#">
-                            <img
-                              src="assets/images/edit.svg"
-                              className="w-16"
-                              alt=""
-                            />
-                          </a>
-                          <a href="your-campaigns-invite-influencers.html">
-                            <img
-                              src="assets/images/invite.svg"
-                              className="w-18"
-                              alt=""
-                            />
-                          </a>
-                          <a href="#">
-                            <img
-                              src="assets/images/pause.svg"
-                              className="w-14"
-                              alt=""
-                            />
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <img src="assets/images/product2.jpg" alt="" />
-                        </td>
-                        <td>Vitamin C Face Durum Apr</td>
-                        <td>Mamaearth</td>
-                        <td>Beauty</td>
-                        <td>Youtube</td>
-                        <td>
-                          <span className="text-success">Active</span>
-                        </td>
-                        <td>India</td>
-                        <td>12 Mar 2023</td>
-                        <td>25 May 2023</td>
-                        <td className="action">
-                          <a href="#">
-                            <img
-                              src="assets/images/edit.svg"
-                              className="w-16"
-                              alt=""
-                            />
-                          </a>
-                          <a href="your-campaigns-invite-influencers.html">
-                            <img
-                              src="assets/images/invite.svg"
-                              className="w-18"
-                              alt=""
-                            />
-                          </a>
-                          <a href="#">
-                            <img
-                              src="assets/images/pause.svg"
-                              className="w-14"
-                              alt=""
-                            />
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <img src="assets/images/product3.jpg" alt="" />
-                        </td>
-                        <td>Vitamin C Face Durum Apr</td>
-                        <td>Mamaearth</td>
-                        <td>Beauty</td>
-                        <td>Youtube</td>
-                        <td>
-                          <span className="text-success">Active</span>
-                        </td>
-                        <td>India</td>
-                        <td>12 Mar 2023</td>
-                        <td>25 May 2023</td>
-                        <td className="action">
-                          <a href="#">
-                            <img
-                              src="assets/images/edit.svg"
-                              className="w-16"
-                              alt=""
-                            />
-                          </a>
-                          <a href="your-campaigns-invite-influencers.html">
-                            <img
-                              src="assets/images/invite.svg"
-                              className="w-18"
-                              alt=""
-                            />
-                          </a>
-                          <a href="#">
-                            <img
-                              src="assets/images/pause.svg"
-                              className="w-14"
-                              alt=""
-                            />
-                          </a>
-                        </td>
-                      </tr>
+                      {campaigns.map(campaign => (
+                        <tr key={campaign.id}>
+                          <td>
+                            {campaign.campaignFiles.map((file, index) => (
+                              <img
+                                key={index}
+                                src={file.pathUri}
+                                alt={`File ${index + 1}`}
+                                style={{ width: "100px", height: "100px" }}
+                              />
+                            ))}
+                          </td>
+
+                          <td>{campaign.campaignName}</td>
+                          <td>{campaign.brandName}</td>
+                          <td>{campaign.genres.join(", ")}</td>
+                          <td>{campaign.socialMedia}</td>
+                          <td>
+                            <span
+                              className={
+                                campaign.status
+                                  ? "text-success"
+                                  : "text-warning"
+                              }
+                            >
+                              {campaign.status ? "Active" : "Pending"}
+                            </span>
+                          </td>
+                          <td>{campaign.country}</td>
+                          <td>{campaign.startDate.join("-")}</td>
+                          <td>{campaign.endDate.join("-")}</td>
+                          <td className="action">
+                            <Link to={`/editcampaign/${campaign.id}`}>
+                              <img
+                                src="assets/images/edit.svg"
+                                className="w-16"
+                                alt="Edit"
+                              />
+                            </Link>
+                            <Link to={`/invite-influencers/${campaign.id}`}>
+                              <img
+                                src="assets/images/invite.svg"
+                                className="w-18"
+                                alt="Invite"
+                              />
+                            </Link>
+                            {
+                              campaign.status && (
+                                <Link href="#" onClick={() => campaign.id}>
+                                  <img
+                                    src="assets/images/pause.svg"
+                                    className="w-14"
+                                    alt="Pause"
+                                  />
+                                </Link>
+                              )
+                            }
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -434,8 +243,8 @@ const Yourcampaigns = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>{" "}
+        </div >
+      </div >
     </>
   );
 };

@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import Header from "../component/Header";
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import dummyDB from "../DummyDB";
 const Influencers = () => {
+  const [wish, setWish] = useState('')
+
+  const handleWishlist = () => {
+    setWish(wish => !wish)
+  }
 
 
   const getData = async () => {
@@ -404,7 +410,7 @@ const Influencers = () => {
                                 <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
                                 Delhi, India
                               </div>
-                              <div className="inl-wishlist">
+                              <div className={` inl-wishlist ${wish ? '' : "active"}`} onClick={handleWishlist}>
                                 <a href="#">
                                   <i className="las la-heart"></i>
                                 </a>
@@ -470,285 +476,61 @@ const Influencers = () => {
                         </div>
                       </div>
 
-                      <div className="col-md-4 col-sm-6">
-                        <div className="card">
-                          <a href="brand-influencer-detail.html">
-                            <div className="profile-inf avatar-lg">
-                              <img
-                                className="avatar-img rounded-circle"
-                                src="assets/images/inf5.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <h2 className="card-title">Aadesh Khurana</h2>
-                            <p className="designation">Public Figure</p>
-                          </a>
-                          <div className="card-body">
-                            <div className="social_link">
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-instagram.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-youtube.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-facebook.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-twitter.svg"
-                                  alt=""
-                                />
-                              </a>
-                            </div>
 
-                            <div className="inf-footer">
-                              <div className="inl-location">
-                                <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                                Delhi, India
-                              </div>
-                              <div className="inl-wishlist">
-                                <a href="#">
-                                  <i className="las la-heart"></i>
-                                </a>
+                      {
+                        dummyDB.map(data => (
+                          <div className="col-md-4 col-sm-6" key={data.id}>
+                            <div className="card">
+                              <a href="brand-influencer-detail.html">
+                                <div className="profile-inf avatar-lg">
+                                  <img
+                                    className="avatar-img rounded-circle"
+                                    src={data.img}
+                                    alt=""
+                                  />
+                                </div>
+                                <h2 className="card-title">{data.name}</h2>
+                                <p className="designation">{data.fig}</p>
+                              </a>
+                              <div className="card-body">
+                                <div className="social_link">
+                                  <a href={data.insta}>
+                                    <img
+                                      src="assets/images/inf-instagram.svg"
+                                      alt=""
+                                    />
+                                  </a>
+                                  <a href={data.insta}>
+                                    <img
+                                      src="assets/images/inf-youtube.svg"
+                                      alt=""
+                                    />
+                                  </a>
+                                  <a href={data.insta}>
+                                    <img
+                                      src="assets/images/inf-facebook.svg"
+                                      alt=""
+                                    />
+                                  </a>
+
+                                </div>
+
+                                <div className="inf-footer">
+                                  <div className="inl-location">
+                                    <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
+                                    {data.location}
+                                  </div>
+                                  <div className={` inl-wishlist ${wish ? '' : "active"}`} onClick={handleWishlist}>
+                                    <a href={data.WishList}>
+                                      <i className="las la-heart"></i>
+                                    </a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-
-                      <div className="col-md-4 col-sm-6">
-                        <div className="card">
-                          <a href="brand-influencer-detail.html">
-                            <div className="profile-inf avatar-lg">
-                              <img
-                                className="avatar-img rounded-circle"
-                                src="assets/images/inf6.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <h2 className="card-title">Sophia</h2>
-                            <p className="designation">Public Figure</p>
-                          </a>
-                          <div className="card-body">
-                            <div className="social_link">
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-instagram.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-youtube.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-facebook.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-twitter.svg"
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-
-                            <div className="inf-footer">
-                              <div className="inl-location">
-                                <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                                Delhi, India
-                              </div>
-                              <div className="inl-wishlist">
-                                <a href="#">
-                                  <i className="las la-heart"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-md-4 col-sm-6">
-                        <div className="card">
-                          <a href="brand-influencer-detail.html">
-                            <div className="profile-inf avatar-lg">
-                              <img
-                                className="avatar-img rounded-circle"
-                                src="assets/images/inf7.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <h2 className="card-title">Aadesh Khurana</h2>
-                            <p className="designation">Public Figure</p>
-                          </a>
-                          <div className="card-body">
-                            <div className="social_link">
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-instagram.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-youtube.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-facebook.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-twitter.svg"
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-
-                            <div className="inf-footer">
-                              <div className="inl-location">
-                                <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                                Delhi, India
-                              </div>
-                              <div className="inl-wishlist">
-                                <a href="#">
-                                  <i className="las la-heart"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-md-4 col-sm-6">
-                        <div className="card">
-                          <a href="brand-influencer-detail.html">
-                            <div className="profile-inf avatar-lg">
-                              <img
-                                className="avatar-img rounded-circle"
-                                src="assets/images/inf8.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <h2 className="card-title">Sophia</h2>
-                            <p className="designation">Public Figure</p>
-                          </a>
-                          <div className="card-body">
-                            <div className="social_link">
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-instagram.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-youtube.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-facebook.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-twitter.svg"
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-
-                            <div className="inf-footer">
-                              <div className="inl-location">
-                                <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                                Delhi, India
-                              </div>
-                              <div className="inl-wishlist">
-                                <a href="#">
-                                  <i className="las la-heart"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-md-4 col-sm-6">
-                        <div className="card">
-                          <a href="brand-influencer-detail.html">
-                            <div className="profile-inf avatar-lg">
-                              <img
-                                className="avatar-img rounded-circle"
-                                src="assets/images/inf9.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <h2 className="card-title">William Adell</h2>
-                            <p className="designation">Public Figure</p>
-                          </a>
-                          <div className="card-body">
-                            <div className="social_link">
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-instagram.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-youtube.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-facebook.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <a href="#">
-                                <img
-                                  src="assets/images/inf-twitter.svg"
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-
-                            <div className="inf-footer">
-                              <div className="inl-location">
-                                <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                                Delhi, India
-                              </div>
-                              <div className="inl-wishlist">
-                                <a href="#">
-                                  <i className="las la-heart"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        ))
+                      }
                     </div>
                   </div>
                   <div className="copyright_text">

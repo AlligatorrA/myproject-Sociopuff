@@ -214,8 +214,9 @@ const Createaccountinfluencer = () => {
                                     console.log(res, 'response');
                                     if (res.status === 201) {
                                       toast.success("Log In Successfully")
-                                      localStorage.setItem('accessToken', JSON.stringify({
-                                        accessToken: res.data.accessToken
+                                      localStorage.setItem('token', JSON.stringify({
+                                        accessToken: res.data.accessToken,
+                                        idToken: res.data.idToken
                                       }))
                                       navigate("/influencercreate")
                                       {

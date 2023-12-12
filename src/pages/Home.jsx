@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../hooks/authProvider";
 const Home = () => {
   const { token, LogOutHandle } = useAuth()
@@ -87,7 +87,7 @@ const Home = () => {
                     brand campaign results beyond clicks, share, like and
                     comments.
                   </p>
-                  <a href="#" className="btn wow fadeInUp" data-wow-delay=".3s">
+                  <a href="/influencers" className="btn wow fadeInUp" data-wow-delay=".3s">
                     Find Influencer
                   </a>
                 </div>
@@ -523,6 +523,7 @@ const Home = () => {
                       Create content and launch on right social media platform
                       with right influencer to reach the campaign goal.
                     </p>
+                    <NavLink to="/adminlogin" className="btn">Admin Login</NavLink>
                   </div>
                 </div>
                 <div className="col-lg-2 col-sm-6 offset-lg-1">

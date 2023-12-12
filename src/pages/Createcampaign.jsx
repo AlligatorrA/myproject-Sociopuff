@@ -1,16 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../component/Header";
 import React, { useState } from "react";
 import axios from "axios";
+import img from "../banner-1.png";
 
 const Createcampaign = () => {
-  const token = JSON.parse(localStorage.getItem("accessToken"))
+  const navigate = useNavigate()
+  const token = JSON.parse(localStorage.getItem("token"))
+  const idToken = JSON.parse(localStorage.getItem("idToken"))
 
   const [selectedCampaignTypes, setSelectedCampaignTypes] = useState([
     "Affiliated",
   ]);
   const [selectedGenres, setSelectedGenres] = useState(["Health & Fitness"]);
-  const [formData, setFormData] = useState({
+  // const [formData, setFormData] = useState({
+  const campaign = {
     campaignName: "Sample Campaign",
     brandName: "Sample Brand",
     brandDetails: "Sample Brand Details",
@@ -31,8 +35,9 @@ const Createcampaign = () => {
     genres: ["Genre1", "Genre2"],
     status: true,
     socialMedia: "Facebook",
-    brandId: 456,
-  });
+    brandId: 456
+  }
+    ;
 
   const handleCampaignTypeClick = campaignType => {
     setSelectedCampaignTypes(prevSelected => {
@@ -54,26 +59,30 @@ const Createcampaign = () => {
     });
   };
 
+
   const handleCreateCampaign = async () => {
 
-    console.log(token.accessToken, "tokennnnn");
+    console.log(token.idToken, "tokennnnn");
+
     try {
-      const response = await axios.post("http://localhost:9090/campaign", formData,
+      await axios.post('http://localhost:9090/campaign',
+
+        {
+          campaign: campaign,
+          file: img
+        },
+
         {
           headers: {
-            'Content-Type': 'application/json',
-            "Authorization": `Bearer ${token.accessToken}`
+            Authorization: ` Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InF3ZXJ0eTJAZ21haWwuY29tIiwibW9iaWxlIjoiMTIzNDU2Nzg5MCIsInByb3ZpZGVyIjoiTE9DQUwiLCJ1c2VySWQiOjMsInN1YiI6InF3ZXJ0eTJAZ21haWwuY29tIiwiaWF0IjoxNzAyMzk0NDMxLCJleHAiOjE3MDI0MDE2MzF9.cZKBMAT0L1hIYAEv8n2XjPCEWgjzIWC9-kC7XgJsQS8`,
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((response) => {
+          console.log(response);
+        })
 
-          },
-
-        }).then(res => console.log(res))
-
-
-      // const data = await response.json();
-      // // Handle the response data as needed
-      // console.log(data);
     } catch (error) {
-      console.error("Error:", error);
+      console.log(error);
     }
   };
 
@@ -468,6 +477,7 @@ const Createcampaign = () => {
                       >
                         Create Campaign
                       </button>
+                      <img src={img} alt="" />
                     </div>
                   </div>
                 </div>

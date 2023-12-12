@@ -813,7 +813,7 @@ const Influencercreate = () => {
                                     <div className="mt-2">
                                       <a
                                         className="btn inflcrbtn mr-1"
-                                        href="influencer-detail.html"
+                                        href="/dashboard"
                                         type="submit"
                                       >
                                         Submit

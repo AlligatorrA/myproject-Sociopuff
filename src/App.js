@@ -22,6 +22,7 @@ import Createaccountinfluencer from "./pages/Createaccountinfluencer";
 import Createaccount from "./pages/Createaccount";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />{" "}
         <Route path="/login" element={<Login />} />{" "}
+        <Route path="/adminlogin" element={<AdminLogin />} />{" "}
         <Route path="/createcampaign" element={<Createcampaign />} />{" "}
         <Route path="/campaignsstatus" element={<Campaignsstatus />} />{" "}
         <Route path="/influencercreate" element={<Influencercreate />} />{" "}

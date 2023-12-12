@@ -10,23 +10,30 @@ const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
     const localStorageToken = JSON.parse(localStorage.getItem('accessToken'))
+    const localStorageIdToken = JSON.parse(localStorage.getItem('idToken'))
     const [token, setToken] = useState(localStorageToken && localStorageToken?.accessToken)
+    const [idToken, setIdToken] = useState(localStorageIdToken && localStorageIdToken?.idToken)
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
 
     const LoginInputHandle = async () => {
         if (username !== "" & password !== '') {
             const data = { username: username, password: password }
-            const accessToken = token
-            const accessTokenParse = parseJwt(accessToken)
             try {
                 const res = await axios.post(`http://localhost:9090/user/authenticate`, data)
                 if (res.status === 201) {
                     toast("Log In Successfully")
-                    localStorage.setItem('accessToken', JSON.stringify({
-                        accessToken: res.data.accessToken
+                    console.log(res);
+                    localStorage.setItem('token', JSON.stringify({
+                        accessToken: res.data.accessToken,
+                        idToken: res.data.idToken
                     }))
                     setToken(res.data.accessToken)
+                    setIdToken(res.data.idToken)
+
+                    const accessToken = token
+                    const accessTokenParse = parseJwt(accessToken)
+
 
                     if (accessTokenParse.roles[0] === ROLE_BRAND) {
                         navigate(`/createcampaign`)
@@ -35,6 +42,7 @@ const AuthProvider = ({ children }) => {
                         navigate(`/influencercreate`)
 
                     }
+
                 }
 
             } catch (error) {
@@ -56,7 +64,7 @@ const AuthProvider = ({ children }) => {
         }, 2000);
 
     }
-    return <AuthContext.Provider value={{ username, setUserName, password, setPassword, LoginInputHandle, LogOutHandle }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ username, setUserName, password, setPassword, LoginInputHandle, LogOutHandle, idToken }}>{children}</AuthContext.Provider>
 
 }
 const useAuth = () => useContext(AuthContext)
