@@ -69,10 +69,10 @@ const Influencerdetail = () => {
           <div className="content">
             <div className="page-header mt20">
               <h1 className="page-title">Olivia Anderson</h1>
-              <a href="#" className="ml-auto dt-link">
+              <a href="/" className="ml-auto dt-link">
                 <i className="fa-sharp fa-solid fa-share-from-square"></i> Share
               </a>
-              <a href="#" className="ml-3 dt-link">
+              <a href="/" className="ml-3 dt-link">
                 <i className="fa-solid fa-pen-to-square"></i> Edit
               </a>
             </div>
@@ -135,32 +135,32 @@ const Influencerdetail = () => {
                                   Public Figure
                                 </p>
                                 <div className="inl-wishlist active">
-                                  <a href="#">
+                                  <a href="/">
                                     <i className="las la-heart"></i>
                                   </a>
                                 </div>
                               </div>
                               <div className="ml-auto">
                                 <div className="social_link mt-2">
-                                  <a href="#" className="ml-0">
+                                  <a href="/" className="ml-0">
                                     <img
                                       src="assets/images/inf-instagram.svg"
                                       alt=""
                                     />
                                   </a>
-                                  <a href="#">
+                                  <a href="/">
                                     <img
                                       src="assets/images/inf-youtube.svg"
                                       alt=""
                                     />
                                   </a>
-                                  <a href="#">
+                                  <a href="/">
                                     <img
                                       src="assets/images/inf-facebook.svg"
                                       alt=""
                                     />
                                   </a>
-                                  <a href="#">
+                                  <a href="/">
                                     <img
                                       src="assets/images/inf-twitter.svg"
                                       alt=""

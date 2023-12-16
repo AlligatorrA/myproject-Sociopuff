@@ -5,14 +5,18 @@ import { BrowserRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./hooks/authProvider";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { TypeProvider } from "./GetDataFunctions/GetInfluencers";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
+
         <GoogleOAuthProvider clientId="356648227693-d2542nq5t4ml284b3a8eb63cvmd8369t.apps.googleusercontent.com">
-          <App />
+          <TypeProvider>
+            <App />
+          </TypeProvider>
         </GoogleOAuthProvider>
       </AuthProvider>
     </BrowserRouter>{" "}

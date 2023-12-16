@@ -2,14 +2,13 @@ import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import React, { useState } from "react";
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
 const Createaccountinfluencer = () => {
   const navigate = useNavigate()
-  const location = useLocation()
   const [formData, setFormData] = useState({
     email: "",
     mobileNumber: "",
@@ -219,8 +218,7 @@ const Createaccountinfluencer = () => {
                                         idToken: res.data.idToken
                                       }))
                                       navigate("/influencercreate")
-                                      {
-                                      }
+
                                     }
 
 

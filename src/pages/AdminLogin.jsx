@@ -1,23 +1,77 @@
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { useAuth } from "../hooks/authProvider";
-import axios from "axios";
-import { GoogleLogin } from '@react-oauth/google';
 import { toast } from "react-toastify";
-import { parseJwt } from "../utils/common";
 
 const AdminLogin = () => {
 
-    const { token, setToken, username, setUserName, password, setPassword, } = useAuth()
-    const location = useLocation()
     const navigate = useNavigate()
-    const [roleCss, setRoleCss] = useState(false)
-    const [roleOpt, setRoleOpt] = useState('ROLE_INFLUENCER')
+    const [adminData, setAdminData] = useState({
+        useName: "",
+        password: ""
+    })
 
 
-    const LoginInputHandle = () => {
+
+    const validatePassword = password => {
+        const uppercaseRegex = /[A-Z]/;
+        const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+        if (!uppercaseRegex.test(password)) {
+            toast.error("Password must contain 1 or more uppercase characters.");
+            return false;
+        }
+
+        if (!specialCharRegex.test(password)) {
+            toast.error("Password must contain 1 or more special characters.");
+            return false;
+        }
+
+        if (password.length < 8) {
+            toast.error("Password must be at least 8 characters long.");
+            return false;
+        }
+
+        return true;
+    };
+
+    const validateEmail = email => {
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isValid = emailRegex.test(email);
+
+        if (!isValid) {
+            toast.error("Invalid email address.");
+        }
+
+        return isValid;
+    };
+
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setAdminData({ ...adminData, [name]: value })
+
+        console.log(adminData);
+
         navigate('/')
+    }
+
+    const AdminLoginHandle = (e) => {
+        const isEmailValid = validateEmail(adminData.email);
+        const isPasswordValid = validatePassword(adminData.password);
+
+        if (!isEmailValid || !isPasswordValid) {
+            return;
+        }
+        try {
+
+        } catch (error) {
+
+        }
+
+
     }
 
     return (
@@ -37,9 +91,10 @@ const AdminLogin = () => {
                             <div className="form-group field">
                                 <input
                                     type="email"
-                                    name="email"
-                                    value={username}
-                                    onChange={(e) => setUserName(e.target.value)}
+                                    name="email
+                                    required"
+                                    value={adminData.useName}
+                                    onChange={handleChange}
                                     className="form-control email"
                                     placeholder="Email Id/Mobile"
                                 />
@@ -48,14 +103,15 @@ const AdminLogin = () => {
                                 <input
                                     type="password"
                                     name="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    value={adminData.password}
+                                    onChange={handleChange}
                                     className="form-control pass"
                                     placeholder="Password/OTP"
                                 />
                             </div>
                             <div className="">
-                                <button className="btn btn-info" onClick={LoginInputHandle}>
+                                <button className="btn btn-info" onClick={AdminLoginHandle}>
                                     Log in
                                 </button>
 

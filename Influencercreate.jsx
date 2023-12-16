@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Influencerheader from "../component/Influencerheader";
-import React, { useState } from "react";
+import { useState } from "react";
 const Influencercreate = () => {
   const categories = [
     "Lifestyle",
@@ -84,10 +84,10 @@ const Influencercreate = () => {
       describeYourself: "",
     },
   ]);
+
   const [name, setName] = useState("");
   const [profile_title, setProfile_title] = useState("");
   const [Describe_yourself, setDescribe_yourself] = useState("");
-
 
   const handlePackageChange = (index, field, value) => {
     const updatedPackages = [...packages];
@@ -188,105 +188,8 @@ const Influencercreate = () => {
                             </label>
                           </div>
                         ))}
-                        <div className="custom-control custom-checkbox">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="Facebook"
-                            name="Facebook"
-                          />
-                          <label className="custom-control-label facbk" htmlFor>
-                            <Link
-                              href="/"
-                              data-target="#Connect-channels"
-                              data-toggle="modal"
-                            >
-                              <i className="fa-brands fa-facebook fa-fw" />{" "}
-                              Facebook
-                            </Link>
-                          </label>
-                        </div>
-                        <div className="custom-control custom-checkbox disabled">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            disabled
-                            id="Twitter"
-                            name="Twitter"
-                          />
-                          <label className="custom-control-label twtr" htmlFor>
-                            <Link
-                              href="/"
-                              data-target="#Connect-channels"
-                              data-toggle="modal"
-                            >
-                              <i className="fa-brands fa-twitter fa-fw" />{" "}
-                              Twitter
-                            </Link>
-                          </label>
-                        </div>
-                        <div className="custom-control custom-checkbox disabled">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            disabled
-                            id="Linkedin"
-                            name="Linkedin"
-                          />
-                          <label className="custom-control-label facbk" htmlFor>
-                            <Link
-                              href="/"
-                              data-target="#Connect-channels"
-                              data-toggle="modal"
-                            >
-                              <i className="fa-brands fa-linkedin-in fa-fw" />{" "}
-                              Linkedin
-                            </Link>
-                          </label>
-                        </div>
-                        <div className="custom-control custom-checkbox disabled">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            disabled
-                            id="TikTok"
-                            name="TikTok"
-                          />
-                          <label
-                            className="custom-control-label tiktok"
-                            htmlFor
-                          >
-                            <Link
-                              href="/"
-                              data-target="#Connect-channels"
-                              data-toggle="modal"
-                            >
-                              <i className="fa-brands fa-tiktok fa-fw" /> TikTok
-                            </Link>
-                          </label>
-                        </div>
-                        <div className="custom-control custom-checkbox disabled">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            disabled
-                            id="Twitch"
-                            name="Twitch"
-                          />
-                          <label
-                            className="custom-control-label twitch"
-                            htmlFor
-                          >
-                            <Link
-                              href="/"
-                              data-target="#Connect-channels"
-                              data-toggle="modal"
-                            >
-                              <i className="fa-brands fa-twitch fa-fw" /> Twitch
-                            </Link>
-                          </label>
-                        </div>
                       </div>
+
                       <h2 className="card-title font-weight-bold">
                         Personal Detail
                       </h2>
@@ -654,8 +557,7 @@ const Influencercreate = () => {
                                     <h2 className="page-title">
                                       {profile_title}
                                     </h2>
-                                    <p className="mt15">
-                                      {Describe_yourself}</p>
+                                    <p className="mt15">{Describe_yourself}</p>
                                     <div className="form-row mt-5">
                                       <div className="col-md-5">
                                         <div className="card">
@@ -681,7 +583,7 @@ const Influencercreate = () => {
                                                       id="previewContent3"
                                                     />
                                                     <div className="inl-wishlist active">
-                                                      <a href="/">
+                                                      <a href="#">
                                                         <i className="las la-heart" />
                                                       </a>
                                                     </div>
@@ -816,7 +718,7 @@ const Influencercreate = () => {
                                     <div className="mt-2">
                                       <a
                                         className="btn inflcrbtn mr-1"
-                                        href="/dashboard"
+                                        href="influencer-detail.html"
                                         type="submit"
                                       >
                                         Submit
@@ -1043,7 +945,7 @@ const Influencercreate = () => {
                   </div>
                 </div>
                 <div className="mt20 d-flex align-content-start">
-                  <a href="/" className="btn inflcrbtn" type="submit">
+                  <a href="#" className="btn inflcrbtn" type="submit">
                     Connect
                   </a>
                 </div>

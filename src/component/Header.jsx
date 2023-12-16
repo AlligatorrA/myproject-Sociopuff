@@ -54,7 +54,7 @@ const Header = () => {
                   aria-expanded="false"
                 >
                   <span className="bell-sect">
-                    <img src="assets/images/notifications.svg" />
+                    <img src="assets/images/notifications.svg" alt="notification" />
                     <span className="notification"></span>
                   </span>
                 </Link>
@@ -70,13 +70,13 @@ const Header = () => {
                   <li>
                     <div className="notif-scroll scrollbar-outer">
                       <div className="notif-center">
-                        <a href="#">
+                        <a href="/">
                           <div className="notif-content">
                             <span className="block">New user registered</span>
                             <span className="time">5 minutes ago</span>
                           </div>
                         </a>
-                        <a href="#">
+                        <a href="/">
                           <div className="notif-content">
                             <span className="block">
                               Rahmad commented on Admin
@@ -84,7 +84,7 @@ const Header = () => {
                             <span className="time">12 minutes ago</span>
                           </div>
                         </a>
-                        <a href="#">
+                        <a href="/">
                           <div className="notif-content">
                             <span className="block">
                               Reza send messages to you
@@ -92,7 +92,7 @@ const Header = () => {
                             <span className="time">12 minutes ago</span>
                           </div>
                         </a>
-                        <a href="#">
+                        <a href="/">
                           <div className="notif-content">
                             <span className="block">Farrah liked Admin</span>
                             <span className="time">17 minutes ago</span>
@@ -113,7 +113,7 @@ const Header = () => {
                 <a
                   className="dropdown-toggle profile-pic"
                   data-toggle="dropdown"
-                  href="#"
+                  href="/"
                   aria-expanded="false"
                 >
                   <p>
@@ -139,7 +139,7 @@ const Header = () => {
                     </li>
                     <li>
                       <div className="dropdown-divider"></div>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/">
                         My Profile
                       </a>
                       <div className="dropdown-divider"></div>

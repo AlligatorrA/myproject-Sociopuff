@@ -9,7 +9,7 @@ const Home = () => {
         <div className="main-header fixed-top wow fadeIn" data-wow-delay=".3s">
           <div className="container d-flex align-items-center">
             <div className="logo-header">
-              <a href="index.html" className="logo">
+              <a href="/" className="logo">
                 <img
                   src="assets/images/logo.png"
                   alt="SocioPuff"
@@ -156,7 +156,7 @@ const Home = () => {
                     product for you on camera so you can use it on your website
                     or social media.
                   </p>
-                  <a href="#" className="btn wow fadeInUp" data-wow-delay=".3s">
+                  <a href="/influencers" className="btn wow fadeInUp" data-wow-delay=".3s">
                     Find Influencer
                   </a>
                 </div>
@@ -193,7 +193,7 @@ const Home = () => {
                     typesetting industry. Lorem Ipsum has been the industry's
                     standard dummy text.
                   </p>
-                  <a href="#" className="btn wow fadeInUp" data-wow-delay=".4s">
+                  <a href="/dashboardbrand" className="btn wow fadeInUp" data-wow-delay=".4s">
                     Get Calculated
                   </a>
                 </div>
@@ -534,19 +534,19 @@ const Home = () => {
                     <div className="footer-menu">
                       <ul>
                         <li className="wow fadeInUp" data-wow-delay="0.4s">
-                          <a href="#">Brands</a>
+                          <a href="/brands">Brands</a>
                         </li>
                         <li className="wow fadeInUp" data-wow-delay="0.5s">
-                          <a href="#">Influencers</a>
+                          <a href="/influencers">Influencers</a>
                         </li>
                         <li className="wow fadeInUp" data-wow-delay="0.6s">
-                          <a href="#">About us</a>
+                          <a href="/aboutus">About us</a>
                         </li>
                         <li className="wow fadeInUp" data-wow-delay="0.7s">
-                          <a href="#">blog</a>
+                          <a href="/blog">blog</a>
                         </li>
                         <li className="wow fadeInUp" data-wow-delay="0.8s">
-                          <a href="#">Contact us</a>
+                          <a href="/contactus">Contact us</a>
                         </li>
                       </ul>
                     </div>
@@ -558,16 +558,16 @@ const Home = () => {
                     <div className="footer-menu mt30">
                       <ul>
                         <li className="wow fadeInUp" data-wow-delay="0.9s">
-                          <a href="#">Youtubers</a>
+                          <a href="/">Youtubers</a>
                         </li>
                         <li className="wow fadeInUp" data-wow-delay="1.0s">
-                          <a href="#">Instagram</a>
+                          <a href="/">Instagram</a>
                         </li>
                         <li className="wow fadeInUp" data-wow-delay="1.2s">
-                          <a href="#">Micro Influencers</a>
+                          <a href="/">Micro Influencers</a>
                         </li>
                         <li className="wow fadeInUp" data-wow-delay="1.3s">
-                          <a href="#">Tik Tok</a>
+                          <a href="/">Tik Tok</a>
                         </li>
                       </ul>
                     </div>
@@ -590,7 +590,7 @@ const Home = () => {
                         <span>
                           <i className="fa fa-phone fa-fw mr-2"></i>
                         </span>
-                        <a href="#">997 1954 977</a>
+                        <a href="tel:9971954977">997 1954 977</a>
                       </li>
                       <li
                         className="d-flex align-items-center wow fadeInUp"
@@ -599,7 +599,7 @@ const Home = () => {
                         <span>
                           <i className="fa fa-envelope fa-fw mr-2"></i>
                         </span>
-                        <a href="#"> contact@sociopuff.com</a>
+                        <a href="mailto:contact@sociopuff.com"> contact@sociopuff.com</a>
                       </li>
                     </ul>
                     <h3 className="mt-4 wow fadeInUp" data-wow-delay="1.8s">
@@ -609,28 +609,28 @@ const Home = () => {
                       <a
                         className="wow bounceIn"
                         data-wow-delay="2.0s"
-                        href="#"
+                        href="/"
                       >
                         <i className="face fa-brands fa-facebook-f fa-fw mr-2"></i>
                       </a>
                       <a
                         className="wow bounceIn"
                         data-wow-delay="2.1s"
-                        href="#"
+                        href="/"
                       >
                         <i className="twtr fa-brands fa-twitter fa-fw mr-2"></i>
                       </a>
                       <a
                         className="wow bounceIn"
                         data-wow-delay="2.2s"
-                        href="#"
+                        href="/"
                       >
                         <i className="ytb fa-brands fa-youtube fa-fw mr-2"></i>
                       </a>
                       <a
                         className="wow bounceIn"
                         data-wow-delay="2.3s"
-                        href="#"
+                        href="/"
                       >
                         <i className="link fa-brands fa-linkedin-in fa-fw"></i>
                       </a>
@@ -649,13 +649,13 @@ const Home = () => {
 
                 <ul className="ml-auto mr-25">
                   <li>
-                    <a href="#">Disclaimer</a>
+                    <a href="/">Disclaimer</a>
                   </li>
                   <li>
-                    <a href="#">Privacy Policy</a>
+                    <a href="/">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="#">Terms & Conditions</a>
+                    <a href="/">Terms & Conditions</a>
                   </li>
                 </ul>
               </div>

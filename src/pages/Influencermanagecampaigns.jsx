@@ -87,7 +87,7 @@ const Influencermanagecampaigns = () => {
                     </div>
                     <a
                       className="inflcrbtn btn"
-                      href="#"
+                      href="/"
                       data-target="#Video-Uploaded"
                       data-toggle="modal"
                       type="submit"
@@ -113,7 +113,7 @@ const Influencermanagecampaigns = () => {
                     </div>
                     <a
                       className="inflcrbtn btn"
-                      href="#"
+                      href="/"
                       data-target="#Video-Uploaded"
                       data-toggle="modal"
                       type="submit"
@@ -139,7 +139,7 @@ const Influencermanagecampaigns = () => {
                     </div>
                     <a
                       className="inflcrbtn btn"
-                      href="#"
+                      href="/"
                       data-target="#Video-Uploaded"
                       data-toggle="modal"
                       type="submit"
@@ -165,7 +165,7 @@ const Influencermanagecampaigns = () => {
                     </div>
                     <a
                       className="inflcrbtn btn"
-                      href="#"
+                      href="/"
                       data-target="#Video-Uploaded"
                       data-toggle="modal"
                       type="submit"

@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import Header from "../component/Header";
 import React from "react";
+import { useType } from "../GetDataFunctions/GetInfluencers";
 const Wishlist = () => {
+
+  const { typeState } = useType()
+
+  const { wishList } = typeState
+  console.log(wishList);
+
   return (
     <>
       <div className="wrapper">
@@ -102,219 +109,66 @@ const Wishlist = () => {
             <div className="page-inner influencers">
               <div className="content-wrapper">
                 <div className="form-row">
-                  <div className="col-md-3 col-sm-6">
-                    <div className="card">
-                      <div className="custom-control custom-checkbox infl">
-                        <input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id="infl1"
-                          name="example"
-                        />
-                        <label
-                          className="custom-control-label"
-                          for="Petrol"
-                        ></label>
-                      </div>
-                      <div className="profile-inf avatar-lg">
-                        <img
-                          className="avatar-img rounded-circle"
-                          src="assets/images/inf1.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <h2 className="card-title">Aadesh Khurana</h2>
-                      <p className="designation">Public Figure</p>
-                      <div className="card-body">
-                        <div className="social_link">
-                          <a href="#">
-                            <img src="assets/images/inf-instagram.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-youtube.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-facebook.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-twitter.svg" alt="" />
-                          </a>
-                        </div>
+                  {
+                    wishList && wishList.map((items) => (
+                      <div className="col-md-3 col-sm-6">
+                        <div className="card">
+                          <div className="custom-control custom-checkbox infl">
+                            <input
+                              type="checkbox"
+                              className="custom-control-input"
+                              id="infl1"
+                              name="example"
+                            />
+                            <label
+                              className="custom-control-label"
+                              for="Petrol"
+                            ></label>
+                          </div>
+                          <div className="profile-inf avatar-lg">
+                            <img
+                              className="avatar-img rounded-circle"
+                              src="assets/images/inf1.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <h2 className="card-title">Aadesh Khurana</h2>
+                          <p className="designation">Public Figure</p>
+                          <div className="card-body">
+                            <div className="social_link">
+                              <a href="/">
+                                <img src="assets/images/inf-instagram.svg" alt="" />
+                              </a>
+                              <a href="/">
+                                <img src="assets/images/inf-youtube.svg" alt="" />
+                              </a>
+                              <a href="/">
+                                <img src="assets/images/inf-facebook.svg" alt="" />
+                              </a>
+                              <a href="/">
+                                <img src="assets/images/inf-twitter.svg" alt="" />
+                              </a>
+                            </div>
 
-                        <div className="inf-footer">
-                          <div className="inl-location">
-                            <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                            Delhi, India
-                          </div>
-                          <div className="inl-wishlist active">
-                            <a href="#">
-                              <i className="las la-heart"></i>
-                            </a>
+                            <div className="inf-footer">
+                              <div className="inl-location">
+                                <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
+                                Delhi, India
+                              </div>
+                              <div className="inl-wishlist active">
+                                <a href="/">
+                                  <i className="las la-heart"></i>
+                                </a>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-md-3 col-sm-6">
-                    <div className="card">
-                      <div className="custom-control custom-checkbox infl">
-                        <input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id="infl2"
-                          name="example"
-                        />
-                        <label
-                          className="custom-control-label"
-                          for="Petrol"
-                        ></label>
-                      </div>
-                      <div className="profile-inf avatar-lg">
-                        <img
-                          className="avatar-img rounded-circle"
-                          src="assets/images/inf2.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <h2 className="card-title">Sophia</h2>
-                      <p className="designation">Public Figure</p>
-                      <div className="card-body">
-                        <div className="social_link">
-                          <a href="#">
-                            <img src="assets/images/inf-instagram.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-youtube.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-facebook.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-twitter.svg" alt="" />
-                          </a>
-                        </div>
+                    )
 
-                        <div className="inf-footer">
-                          <div className="inl-location">
-                            <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                            Delhi, India
-                          </div>
-                          <div className="inl-wishlist active">
-                            <a href="#">
-                              <i className="las la-heart"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    )
+                  }
 
-                  <div className="col-md-3 col-sm-6">
-                    <div className="card">
-                      <div className="custom-control custom-checkbox infl">
-                        <input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id="infl3"
-                          name="example"
-                        />
-                        <label
-                          className="custom-control-label"
-                          for="Petrol"
-                        ></label>
-                      </div>
-                      <div className="profile-inf avatar-lg">
-                        <img
-                          className="avatar-img rounded-circle"
-                          src="assets/images/inf3.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <h2 className="card-title">William Adell</h2>
-                      <p className="designation">Public Figure</p>
-                      <div className="card-body">
-                        <div className="social_link">
-                          <a href="#">
-                            <img src="assets/images/inf-instagram.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-youtube.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-facebook.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-twitter.svg" alt="" />
-                          </a>
-                        </div>
-
-                        <div className="inf-footer">
-                          <div className="inl-location">
-                            <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                            Delhi, India
-                          </div>
-                          <div className="inl-wishlist active">
-                            <a href="#">
-                              <i className="las la-heart"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-3 col-sm-6">
-                    <div className="card">
-                      <div className="custom-control custom-checkbox infl">
-                        <input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id="infl2"
-                          name="example"
-                        />
-                        <label
-                          className="custom-control-label"
-                          for="Petrol"
-                        ></label>
-                      </div>
-                      <div className="profile-inf avatar-lg">
-                        <img
-                          className="avatar-img rounded-circle"
-                          src="assets/images/inf4.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <h2 className="card-title">Olivia Anderson</h2>
-                      <p className="designation">Public Figure</p>
-                      <div className="card-body">
-                        <div className="social_link">
-                          <a href="#">
-                            <img src="assets/images/inf-instagram.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-youtube.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-facebook.svg" alt="" />
-                          </a>
-                          <a href="#">
-                            <img src="assets/images/inf-twitter.svg" alt="" />
-                          </a>
-                        </div>
-
-                        <div className="inf-footer">
-                          <div className="inl-location">
-                            <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                            Delhi, India
-                          </div>
-                          <div className="inl-wishlist active">
-                            <a href="#">
-                              <i className="las la-heart"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <div className="mt-2">
                   <button

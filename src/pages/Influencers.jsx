@@ -1,25 +1,23 @@
 import { Link } from "react-router-dom";
 import Header from "../component/Header";
 import React, { useState } from "react";
-import axios from "axios";
-import dummyDB from "../DummyDB";
+import { useType } from "../GetDataFunctions/GetInfluencers";
 const Influencers = () => {
+  const { typeState, typeDispatch } = useType()
+  const { influencers } = typeState
+
   const [wish, setWish] = useState('')
+  const [val, setVal] = useState('')
 
   const handleWishlist = () => {
+    const wishList = []
+    influencers &&
+      influencers.data.map((items) => items.filter((item) => item.id === items.id ? wishList.push(items) : ''))
+
+    console.log(wishList);
     setWish(wish => !wish)
   }
 
-
-  const getData = async () => {
-    try {
-      const res = axios.get("http://localhost:9090/campaigns")
-
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <>
@@ -123,33 +121,13 @@ const Influencers = () => {
                   </h3>
                   <div className="sect-dvr">
                     <h4 className="subhding">By Follower</h4>
-                    <select className="custom-select">
-                      <option selected>- Selecte -</option>
-                      <option>YouTube</option>
-                      <option>Instagram</option>
-                      <option>Facebook</option>
+                    <select className="custom-select" onChange={(e) => setVal(e.target.value)}>
+                      <option value='youtube'>YouTube</option>
+                      <option value='Instagram'>Instagram</option>
+                      <option value='facebook'>Facebook</option>
                     </select>
                   </div>
-                  <div className="sect-dvr">
-                    <h4 className="subhding">Price Range</h4>
-                    <div className="slider-wrapper slider-ghost mt20">
-                      <label for="customRange1" className="form-label">
-                        $200
-                      </label>
-                      <input
-                        className="input-range"
-                        data-slider-id="ex12cSlider"
-                        type="text"
-                        data-slider-step="10"
-                        data-slider-tooltip="always"
-                        data-slider-value="30, 70"
-                        data-slider-min="1"
-                        data-slider-max="100"
-                        data-slider-range="true"
-                        data-slider-tooltip_split="true"
-                      />
-                    </div>
-                  </div>
+
                   <div className="sect-dvr">
                     <h4 className="subhding">Gener</h4>
                     <div className="custom-control custom-checkbox">
@@ -159,7 +137,7 @@ const Influencers = () => {
                         id="Gener"
                         name="example"
                       />
-                      <label className="custom-control-label" for="Petrol">
+                      <label className="custom-control-label" htmlFor="Petrol">
                         Fashion
                       </label>
                     </div>
@@ -170,7 +148,7 @@ const Influencers = () => {
                         id="Gener1"
                         name="example"
                       />
-                      <label className="custom-control-label" for="Diesel">
+                      <label className="custom-control-label" htmlFor="Diesel">
                         Health
                       </label>
                     </div>
@@ -181,7 +159,7 @@ const Influencers = () => {
                         id="Gener2"
                         name="example"
                       />
-                      <label className="custom-control-label" for="Gas">
+                      <label className="custom-control-label" htmlFor="Gas">
                         Marketing
                       </label>
                     </div>
@@ -191,8 +169,9 @@ const Influencers = () => {
                         className="custom-control-input"
                         id="Gener3"
                         name="example"
+                        onChange={(e) => setVal(e.target.value)}
                       />
-                      <label className="custom-control-label" for="Electric">
+                      <label className="custom-control-label" htmlFor="Electric">
                         Food
                       </label>
                     </div>
@@ -205,8 +184,9 @@ const Influencers = () => {
                         className="custom-control-input"
                         id="Youtube"
                         name="example"
+                        onChange={(e) => setVal(e.target.value)}
                       />
-                      <label className="custom-control-label" for="Petrol">
+                      <label className="custom-control-label" htmlFor="Petrol">
                         Youtube
                       </label>
                     </div>
@@ -216,8 +196,9 @@ const Influencers = () => {
                         className="custom-control-input"
                         id="Instagram"
                         name="example"
+                        onChange={(e) => setVal(e.target.value)}
                       />
-                      <label className="custom-control-label" for="Diesel">
+                      <label className="custom-control-label" htmlFor="Diesel">
                         Instagram
                       </label>
                     </div>
@@ -227,8 +208,9 @@ const Influencers = () => {
                         className="custom-control-input"
                         id="Facebook"
                         name="example"
+                        onChange={(e) => setVal(e.target.value)}
                       />
-                      <label className="custom-control-label" for="Gas">
+                      <label className="custom-control-label" htmlFor="Gas">
                         Facebook
                       </label>
                     </div>
@@ -238,8 +220,10 @@ const Influencers = () => {
                         className="custom-control-input"
                         id="Telegram"
                         name="example"
+                        value={val}
+                        onChange={(e) => setVal(e.target.value)}
                       />
-                      <label className="custom-control-label" for="Electric">
+                      <label className="custom-control-label" htmlFor="Electric">
                         Telegram
                       </label>
                     </div>
@@ -268,25 +252,25 @@ const Influencers = () => {
                           </a>
                           <div className="card-body">
                             <div className="social_link">
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-instagram.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-youtube.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-facebook.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-twitter.svg"
                                   alt=""
@@ -300,7 +284,7 @@ const Influencers = () => {
                                 Delhi, India
                               </div>
                               <div className="inl-wishlist active">
-                                <a href="#">
+                                <a href="/">
                                   <i className="las la-heart"></i>
                                 </a>
                               </div>
@@ -323,25 +307,25 @@ const Influencers = () => {
                           </a>
                           <div className="card-body">
                             <div className="social_link">
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-instagram.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-youtube.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-facebook.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-twitter.svg"
                                   alt=""
@@ -355,7 +339,7 @@ const Influencers = () => {
                                 Delhi, India
                               </div>
                               <div className="inl-wishlist">
-                                <a href="#">
+                                <a href="/wishlist">
                                   <i className="las la-heart"></i>
                                 </a>
                               </div>
@@ -379,25 +363,25 @@ const Influencers = () => {
                           </a>
                           <div className="card-body">
                             <div className="social_link">
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-instagram.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-youtube.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-facebook.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-twitter.svg"
                                   alt=""
@@ -411,7 +395,7 @@ const Influencers = () => {
                                 Delhi, India
                               </div>
                               <div className={` inl-wishlist ${wish ? '' : "active"}`} onClick={handleWishlist}>
-                                <a href="#">
+                                <a href="/">
                                   <i className="las la-heart"></i>
                                 </a>
                               </div>
@@ -435,25 +419,25 @@ const Influencers = () => {
                           </a>
                           <div className="card-body">
                             <div className="social_link">
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-instagram.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-youtube.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-facebook.svg"
                                   alt=""
                                 />
                               </a>
-                              <a href="#">
+                              <a href="/">
                                 <img
                                   src="assets/images/inf-twitter.svg"
                                   alt=""
@@ -467,7 +451,7 @@ const Influencers = () => {
                                 Delhi, India
                               </div>
                               <div className="inl-wishlist">
-                                <a href="#">
+                                <a href="/wishlist">
                                   <i className="las la-heart"></i>
                                 </a>
                               </div>
@@ -477,36 +461,39 @@ const Influencers = () => {
                       </div>
 
 
-                      {
-                        dummyDB.map(data => (
-                          <div className="col-md-4 col-sm-6" key={data.id}>
+                      {influencers &&
+                        // console.log(FilteredChannel)
+                        // <img src={influencers.data[0].influencerFiles[0].name} alt="" />
+                        // <li>{influencers.data[0].influencerFiles[0].name} </li>
+                        influencers.map(influencer => (
+                          <div className="col-md-4 col-sm-6" key={influencer.id}>
                             <div className="card">
                               <a href="brand-influencer-detail.html">
                                 <div className="profile-inf avatar-lg">
                                   <img
                                     className="avatar-img rounded-circle"
-                                    src={data.img}
+                                    src={influencer.influencerFiles[0].pathUri}
                                     alt=""
                                   />
                                 </div>
-                                <h2 className="card-title">{data.name}</h2>
-                                <p className="designation">{data.fig}</p>
+                                <h2 className="card-title">{influencer.influencerName}</h2>
+                                <p className="designation">{influencer.email}</p>
                               </a>
                               <div className="card-body">
                                 <div className="social_link">
-                                  <a href={data.insta}>
+                                  <a href={influencer.instagram}>
                                     <img
                                       src="assets/images/inf-instagram.svg"
                                       alt=""
                                     />
                                   </a>
-                                  <a href={data.insta}>
+                                  <a href={influencer.youtube}>
                                     <img
                                       src="assets/images/inf-youtube.svg"
                                       alt=""
                                     />
                                   </a>
-                                  <a href={data.insta}>
+                                  <a href={influencer.facebook}>
                                     <img
                                       src="assets/images/inf-facebook.svg"
                                       alt=""
@@ -518,10 +505,14 @@ const Influencers = () => {
                                 <div className="inf-footer">
                                   <div className="inl-location">
                                     <i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
-                                    {data.location}
+                                    {influencer.location}
                                   </div>
-                                  <div className={` inl-wishlist ${wish ? '' : "active"}`} onClick={handleWishlist}>
-                                    <a href={data.WishList}>
+                                  <div className={` inl-wishlist ${wish ? '' : "active"}`} onClick={
+                                    // handleWishlist
+                                    () => typeDispatch({ type: 'ADD_TO_WISHLIST', payload: influencer.id })
+
+                                  }>
+                                    <a href={influencer.wishList}>
                                       <i className="las la-heart"></i>
                                     </a>
                                   </div>
@@ -531,6 +522,7 @@ const Influencers = () => {
                           </div>
                         ))
                       }
+
                     </div>
                   </div>
                   <div className="copyright_text">

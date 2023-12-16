@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { parseJwt } from "../utils/common";
 import { ROLE_BRAND, ROLE_INFLUENCER } from "../utils/constants";
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
                 const res = await axios.post(`http://localhost:9090/user/authenticate`, data)
                 if (res.status === 201) {
                     toast("Log In Successfully")
-                    console.log(res);
+
                     localStorage.setItem('token', JSON.stringify({
                         accessToken: res.data.accessToken,
                         idToken: res.data.idToken

@@ -181,7 +181,7 @@ const Createcampaign = () => {
                 <div className="main-panel">
                     <div className="content">
                         <div className="page-header mt10">
-                            <a className="btn-sm btn-light mr-2" href="your-campaigns.html">
+                            <a className="btn-sm btn-light mr-2" href="yourcampaigns">
                                 <i className="fa fa-arrow-left-long" /> Back
                             </a>
                             <h1 className="page-title">Create Campaign</h1>

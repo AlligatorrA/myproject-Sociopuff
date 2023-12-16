@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Influencerheader from "../component/Influencerheader";
-import { useAuth } from "../hooks/authProvider";
 
 const Influencerinfluencers = () => {
-  const { token } = useAuth()
   const [influencers, setInfluencers] = useState([]);
 
   useEffect(() => {
@@ -16,7 +14,7 @@ const Influencerinfluencers = () => {
           {
             headers: {
               Authorization:
-                `Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InF3ZXJ0eTJAZ21haWwuY29tIiwibW9iaWxlIjoiMTIzNDU2Nzg5MCIsInByb3ZpZGVyIjoiTE9DQUwiLCJ1c2VySWQiOjMsInN1YiI6InF3ZXJ0eTJAZ21haWwuY29tIiwiaWF0IjoxNzAyMzg2MTU5LCJleHAiOjE3MDIzOTMzNTl9.BxZsfSslxUvgpVKmw8f0Tdlah4esPs-3m_todX92iP0`,
+                `Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InF3ZXJ0eTJAZ21haWwuY29tIiwibW9iaWxlIjoiMTIzNDU2Nzg5MCIsInByb3ZpZGVyIjoiTE9DQUwiLCJ1c2VySWQiOjMsInN1YiI6InF3ZXJ0eTJAZ21haWwuY29tIiwiaWF0IjoxNzAyNDU5MDI2LCJleHAiOjE3MDI0NjYyMjZ9.07tD4rIOOe5RNUu3wEKsVZFyTEN7PphQvLfin2VpM-o`,
             },
           }
         );
@@ -103,17 +101,7 @@ const Influencerinfluencers = () => {
                   {influencers.map(influencer => (
                     <div key={influencer.id} className="col-md-3 col-sm-6">
                       <div className="card">
-                        <div className="custom-control custom-checkbox infl">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id={`infl${influencer.id}`}
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor={`infl${influencer.id}`}
-                          ></label>
-                        </div>
+
                         <div className="profile-inf avatar-lg">
                           <img
                             className="avatar-img rounded-circle"
@@ -156,13 +144,7 @@ const Influencerinfluencers = () => {
                                 alt=""
                               />
                             </a>
-                            <a
-                              href={influencer.twitterLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <img src="assets/images/inf-twitter.svg" alt="" />
-                            </a>
+
                           </div>
                           <div className="inf-footer">
                             <div className="inl-location">
@@ -170,7 +152,7 @@ const Influencerinfluencers = () => {
                               Delhi, India
                             </div>
                             <div className="inl-wishlist">
-                              <a href="#">
+                              <a href='/'>
                                 <i className="las la-heart"></i>
                               </a>
                             </div>

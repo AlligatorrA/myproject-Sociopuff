@@ -70,13 +70,13 @@ const Influencerheader = () => {
                   <li>
                     <div className="notif-scroll scrollbar-outer">
                       <div className="notif-center">
-                        <a href="brand-notification.html">
+                        <a href="/">
                           <div className="notif-content">
                             <span className="block">New user registered</span>
                             <span className="time">5 minutes ago</span>
                           </div>
                         </a>
-                        <a href="brand-notification.html">
+                        <a href="/">
                           <div className="notif-content">
                             <span className="block">Rahmad commented on Admin</span>
                             <span className="time">12 minutes ago</span>
@@ -92,7 +92,7 @@ const Influencerheader = () => {
                     </div>
                   </li>
                   <li>
-                    <a className="see-all" href="influencer-notification.html">
+                    <a className="see-all" href="/">
                       See all notifications<i className="la la-angle-right"></i>{" "}
                     </a>
                   </li>
@@ -129,7 +129,7 @@ const Influencerheader = () => {
                     </li>
                     <li>
                       <div className="dropdown-divider"></div>
-                      <a className="dropdown-item" href="influencer-detail.html">
+                      <a className="dropdown-item" href="/">
                         My Profile
                       </a>
                       <div className="dropdown-divider"></div>

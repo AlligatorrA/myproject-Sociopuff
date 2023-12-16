@@ -128,16 +128,16 @@ const Allinvities = () => {
                       <p className="designation">Public Figure</p>
                       <div className="card-body">
                         <div className="social_link">
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-instagram.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-youtube.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-facebook.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-twitter.svg" alt="" />
                           </a>
                         </div>
@@ -148,7 +148,7 @@ const Allinvities = () => {
                             Delhi, India
                           </div>
                           <div className="inl-wishlist active">
-                            <a href="#">
+                            <a href="/">
                               <i className="las la-heart"></i>
                             </a>
                           </div>
@@ -181,16 +181,16 @@ const Allinvities = () => {
                       <p className="designation">Public Figure</p>
                       <div className="card-body">
                         <div className="social_link">
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-instagram.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-youtube.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-facebook.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-twitter.svg" alt="" />
                           </a>
                         </div>
@@ -201,7 +201,7 @@ const Allinvities = () => {
                             Delhi, India
                           </div>
                           <div className="inl-wishlist active">
-                            <a href="#">
+                            <a href="/">
                               <i className="las la-heart"></i>
                             </a>
                           </div>
@@ -235,16 +235,16 @@ const Allinvities = () => {
                       <p className="designation">Public Figure</p>
                       <div className="card-body">
                         <div className="social_link">
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-instagram.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-youtube.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-facebook.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-twitter.svg" alt="" />
                           </a>
                         </div>
@@ -255,7 +255,7 @@ const Allinvities = () => {
                             Delhi, India
                           </div>
                           <div className="inl-wishlist active">
-                            <a href="#">
+                            <a href="/">
                               <i className="las la-heart"></i>
                             </a>
                           </div>
@@ -288,16 +288,16 @@ const Allinvities = () => {
                       <p className="designation">Public Figure</p>
                       <div className="card-body">
                         <div className="social_link">
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-instagram.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-youtube.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-facebook.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img src="assets/images/inf-twitter.svg" alt="" />
                           </a>
                         </div>
@@ -308,7 +308,7 @@ const Allinvities = () => {
                             Delhi, India
                           </div>
                           <div className="inl-wishlist active">
-                            <a href="#">
+                            <a href="/">
                               <i className="las la-heart"></i>
                             </a>
                           </div>

@@ -1,5 +1,5 @@
 // "use strict";
-
+let $
 $(document).ready(function () {
 
 	$('.btn-refresh-card').on('click', function () { var e = $(this).parents(".card"); e.length && (e.addClass("is-loading"), setTimeout(function () { e.removeClass("is-loading") }, 3e3)) })

@@ -23,8 +23,11 @@ import Createaccount from "./pages/Createaccount";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import AdminLogin from "./pages/AdminLogin";
+import GetInfluencers from "./GetDataFunctions/GetInfluencers";
 
 function App() {
+
+
   return (
     <div className="App">
       <ToastContainer theme="colored"> </ToastContainer>{" "}
@@ -66,6 +69,7 @@ function App() {
           element={<Influencerreportanalytics />}
         />{" "}
       </Routes>{" "}
+      <GetInfluencers />
     </div>
   );
 }

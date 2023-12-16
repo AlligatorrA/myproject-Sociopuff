@@ -108,6 +108,7 @@ const Howitworks = () => {
                       src="https://www.youtube.com/embed/undefined"
                       frameborder="0"
                       allowfullscreen
+                      title="Sociopuff"
                     ></iframe>
                   </div>
                 </div>

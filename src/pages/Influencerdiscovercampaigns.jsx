@@ -89,7 +89,7 @@ const Influencerdiscovercampaigns = () => {
                           <a
                             className="dropdown-toggle"
                             data-toggle="dropdown"
-                            href="#"
+                            href="/"
                             aria-expanded="false"
                           >
                             Campaigns
@@ -97,19 +97,19 @@ const Influencerdiscovercampaigns = () => {
                           <ul className="dropdown-menu animated fadeIn">
                             <div className="dropdown-user-scroll scrollbar-outer">
                               <li>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="/">
                                   Active
                                 </a>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="/">
                                   Paid
                                 </a>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="/">
                                   Batter
                                 </a>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="/">
                                   Affiliated
                                 </a>
                               </li>
@@ -139,13 +139,13 @@ const Influencerdiscovercampaigns = () => {
                         <td>25 May 2023</td>
                         <td className="action">
                           <a
-                            href="#"
+                            href="/"
                             data-target="#Apply-Campaigns"
                             data-toggle="modal"
                           >
                             <img src="assets/images/apply.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img
                               src="assets/images/view.svg"
                               className="w-14"
@@ -168,13 +168,13 @@ const Influencerdiscovercampaigns = () => {
                         <td>25 May 2023</td>
                         <td className="action">
                           <a
-                            href="#"
+                            href="/"
                             data-target="#Apply-Campaigns"
                             data-toggle="modal"
                           >
                             <img src="assets/images/apply.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img
                               src="assets/images/view.svg"
                               className="w-14"
@@ -197,13 +197,13 @@ const Influencerdiscovercampaigns = () => {
                         <td>25 May 2023</td>
                         <td className="action">
                           <a
-                            href="#"
+                            href="/"
                             data-target="#Apply-Campaigns"
                             data-toggle="modal"
                           >
                             <img src="assets/images/apply.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img
                               src="assets/images/view.svg"
                               className="w-14"
@@ -228,13 +228,13 @@ const Influencerdiscovercampaigns = () => {
                         <td>25 May 2023</td>
                         <td className="action">
                           <a
-                            href="#"
+                            href="/"
                             data-target="#Apply-Campaigns"
                             data-toggle="modal"
                           >
                             <img src="assets/images/apply.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img
                               src="assets/images/view.svg"
                               className="w-14"
@@ -257,13 +257,13 @@ const Influencerdiscovercampaigns = () => {
                         <td>25 May 2023</td>
                         <td className="action">
                           <a
-                            href="#"
+                            href="/"
                             data-target="#Apply-Campaigns"
                             data-toggle="modal"
                           >
                             <img src="assets/images/apply.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img
                               src="assets/images/view.svg"
                               className="w-14"
@@ -286,13 +286,13 @@ const Influencerdiscovercampaigns = () => {
                         <td>25 May 2023</td>
                         <td className="action">
                           <a
-                            href="#"
+                            href="/"
                             data-target="#Apply-Campaigns"
                             data-toggle="modal"
                           >
                             <img src="assets/images/apply.svg" alt="" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <img
                               src="assets/images/view.svg"
                               className="w-14"

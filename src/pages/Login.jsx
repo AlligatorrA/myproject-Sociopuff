@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useAuth } from "../hooks/authProvider";
 import axios from "axios";
@@ -7,8 +7,7 @@ import { toast } from "react-toastify";
 import { parseJwt } from "../utils/common";
 
 const Login = () => {
-  const { token, setToken, username, setUserName, password, setPassword, LoginInputHandle, LogOutHandle, } = useAuth()
-  const location = useLocation()
+  const { token, username, setUserName, password, setPassword, LoginInputHandle, LogOutHandle, } = useAuth()
   const navigate = useNavigate()
   const [roleCss, setRoleCss] = useState(false)
   const [roleOpt, setRoleOpt] = useState('ROLE_INFLUENCER')
@@ -66,7 +65,7 @@ const Login = () => {
                     <button className="btn btn-info" onClick={LoginInputHandle}>
                       Log in
                     </button>}
-                  <a href="#" className="forgot-password">
+                  <a href="/createaccount" className="forgot-password">
                     Forgot Password?
                   </a>
                 </div>

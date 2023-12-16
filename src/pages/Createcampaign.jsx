@@ -5,14 +5,13 @@ import axios from "axios";
 import img from "../banner-1.png";
 
 const Createcampaign = () => {
-  const navigate = useNavigate()
   const token = JSON.parse(localStorage.getItem("token"))
-  const idToken = JSON.parse(localStorage.getItem("idToken"))
 
   const [selectedCampaignTypes, setSelectedCampaignTypes] = useState([
     "Affiliated",
   ]);
   const [selectedGenres, setSelectedGenres] = useState(["Health & Fitness"]);
+  const [file, setFile] = useState('')
   // const [formData, setFormData] = useState({
   const campaign = {
     campaignName: "Sample Campaign",
@@ -59,32 +58,77 @@ const Createcampaign = () => {
     });
   };
 
+  // ******************************************************
+  // Create an axios instance with some options
 
-  const handleCreateCampaign = async () => {
 
-    console.log(token.idToken, "tokennnnn");
+  const handleCreateCampaign = async (e) => {
+    const instance = axios.create({
+      baseURL: 'http://localhost:9090/campaign',
+      headers: {
+        Authorization: ` Bearer ${token.idToken}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    });
 
-    try {
-      await axios.post('http://localhost:9090/campaign',
+    // Add an interceptor for response errors
+    instance.interceptors.response.use(
+      response => {
+        // Send the response data
+        return response.data;
+      },
+      error => {
+        // Check if the error is a 401
+        if (error.response.status === 401) {
+          // Redirect to login or show an alert message
+          return Promise.reject(error);
+        }
+        // Otherwise, reject the error with the original response data
+        return Promise.reject(error.response.data);
+      }
+    );
 
-        {
-          campaign: campaign,
-          file: img
-        },
+    // Make a post request with the instance
+    instance.post('http://localhost:9090/campaign', {
+      file: file.name, campaign
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
-        {
-          headers: {
-            Authorization: ` Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InF3ZXJ0eTJAZ21haWwuY29tIiwibW9iaWxlIjoiMTIzNDU2Nzg5MCIsInByb3ZpZGVyIjoiTE9DQUwiLCJ1c2VySWQiOjMsInN1YiI6InF3ZXJ0eTJAZ21haWwuY29tIiwiaWF0IjoxNzAyMzk0NDMxLCJleHAiOjE3MDI0MDE2MzF9.cZKBMAT0L1hIYAEv8n2XjPCEWgjzIWC9-kC7XgJsQS8`,
-            'Content-Type': 'multipart/form-data'
-          }
-        }).then((response) => {
-          console.log(response);
-        })
+  }
+  // **********************************************************************
+  // const handleCreateCampaign = async (e) => {
 
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //   console.log(token.idToken, "tokennnnn");
+
+  //   console.log(file.name);
+
+
+  //   try {
+  //     await axios.post('http://localhost:9090/campaign',
+
+  //       {
+  //         campaign: campaign,
+  //         file: file.name
+  //       },
+
+  //       {
+  //         headers: {
+  //           Authorization: ` Bearer ${token.idToken}`,
+  //           'Content-Type': 'multipart/form-data'
+  //         }
+  //       }).then((response) => {
+  //         console.log(response);
+  //       })
+
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
@@ -283,6 +327,7 @@ const Createcampaign = () => {
                             name="product_image"
                             id="product_image"
                             className="custom-file-input"
+                            onChange={(e) => setFile(e.target.files[0])}
                           />
                           <label
                             className="custom-file-label"
@@ -413,7 +458,7 @@ const Createcampaign = () => {
                             ? "selected"
                             : ""
                             }`}
-                          href="#"
+                          href={null}
                           onClick={() => handleCampaignTypeClick("Barter")}
                         >
                           Barter
@@ -423,7 +468,7 @@ const Createcampaign = () => {
                             ? "selected"
                             : ""
                             }`}
-                          href="#"
+                          href={null}
                           onClick={() => handleCampaignTypeClick("Affiliated")}
                         >
                           Affiliated
@@ -433,7 +478,7 @@ const Createcampaign = () => {
                             ? "selected"
                             : ""
                             }`}
-                          href="#"
+                          href={null}
                           onClick={() => handleCampaignTypeClick("Paid")}
                         >
                           Paid
@@ -462,7 +507,7 @@ const Createcampaign = () => {
                             key={genre}
                             className={`slct_link ${selectedGenres.includes(genre) ? "selected" : ""
                               }`}
-                            href="#"
+                            href={null}
                             onClick={() => handleGenreClick(genre)}
                           >
                             {genre}
@@ -470,6 +515,7 @@ const Createcampaign = () => {
                         ))}
                       </div>
                     </div>
+
                     <div className="mb-2">
                       <button
                         className="btn2 btn"

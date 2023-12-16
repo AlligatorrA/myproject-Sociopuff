@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Createaccount = () => {
 
@@ -121,10 +121,6 @@ const Createaccount = () => {
 
   // });
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: (codeResponse) => console.log(codeResponse),
-    flow: "auth-code",
-  });
 
 
   // const handleCallBack = (response) => {
@@ -246,7 +242,6 @@ const Createaccount = () => {
                                         accessToken: res.data.accessToken,
                                         idToken: res.data.idToken
                                       }))
-
 
                                       navigate("/createcampaign")
                                     }

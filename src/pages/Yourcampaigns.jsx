@@ -14,7 +14,7 @@ const Yourcampaigns = () => {
         const response = await axios.get("http://localhost:9090/campaigns", {
           headers: {
             Authorization:
-              `Bearer ${token}`,
+              `Bearer ${token.idToken}`,
           },
         });
         console.log(response);
@@ -25,7 +25,7 @@ const Yourcampaigns = () => {
     };
 
     fetchData();
-  }, []);
+  }, [token.idToken]);
 
   return (
     <>

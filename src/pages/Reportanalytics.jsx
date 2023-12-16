@@ -101,7 +101,7 @@ const Reportanalytics = () => {
               <div class="dropdown show ml-auto">
                 <a
                   class="text-reset dropdown-toggle"
-                  href="#"
+                  href="/"
                   role="button"
                   id="shorBy"
                   data-toggle="dropdown"
@@ -119,7 +119,7 @@ const Reportanalytics = () => {
                   </a>
                   <a
                     class="dropdown-item"
-                    href="#"
+                    href="/"
                     data-target="#Campaigns-1"
                     data-toggle="modal"
                   >
